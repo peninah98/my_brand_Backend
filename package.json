@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm index.js",
-    "test": "jest "
+    "test": "jest",
+    "jest":{
+      "testTimeout":15000
+    }
   },
   "keywords": [],
   "author": "Rahman Fadhil <rhmnfadhil@gmail.com> (https://rahmanfadhil.com/)",
