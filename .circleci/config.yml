@@ -1,33 +1,29 @@
-
 version: 2.1
 
+# Define the jobs we want to run for this project
 jobs:
   build:
-    working_directory: ~/repo
     docker:
-      - image: circleci/node:12.18.3
-
+      - image: cimg/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: |
-          name: Install npm Dependencies
-          command: npm install --save
+      - run: echo "this is the build job"
+  test:
+    docker:
+      - image: cimg/<language>:<version TAG>
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: echo "this is the test job"
 
-      - run: |
-          name:Run Unit Test
-          command:  |
-            ./node_modules/supertest/bin/supertest __test__/ 
-
-      - run:
-          name: Build
-          command: npm run build
-      - store_test_results:
-          path:test-results
-      -store-artifacts:
-        path:test-results
+# Orchestrate our job run sequence
 workflows:
-  build_tests:
+  build_and_test:
     jobs:
-      - run_tests
-
-
+      - build
+      - test

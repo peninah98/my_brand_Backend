@@ -7,7 +7,7 @@ const newBlog = {
     title:"Rwandair",
     description:"rwandair is Rwanda national airline",
     content:"rwandair is Rwanda national airline rwandair is Rwanda national airline",
-    image:imageLink,
+    
    
 
 }
