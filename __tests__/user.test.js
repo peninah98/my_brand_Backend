@@ -36,6 +36,9 @@ describe('Test the users endpoint', () => {
   test('it should return a user', async()=>{
     const response = await request(app).get('/api/v1/users/63bd6994134b021a1021c89d');
     expect(response.statusCode).toBe(200);
+    jest.setTimeout(() => {
+      
+    }, 15000);
   });
   test('it should update user', async() =>{
     const response = await request(app).put('/api/v1/users/63bd6994134b021a1021c89d').send(updateUser);
@@ -43,7 +46,7 @@ describe('Test the users endpoint', () => {
   })
   test('it should not update user', async() =>{
     const response = await request(app).put('/api/v1/users/63bd54db650dcc25fcf6ce9').send(updateUser);
-    expect(response.statusCode).toBe();
+    expect(response.statusCode).toBe(404);
   })
   // test('it should delete user', async() =>{
   //   const response = await request(app).delete('/api/v1/users/63bd6994134b021a1021c89d');

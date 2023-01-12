@@ -1,0 +1,33 @@
+
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12.18.3
+
+    steps:
+      - checkout
+      - run: |
+          name: Install npm Dependencies
+          command: npm install --save
+
+      - run: |
+          name:Run Unit Test
+          command:  |
+            ./node_modules/supertest/bin/supertest __test__/ 
+
+      - run:
+          name: Build
+          command: npm run build
+      - store_test_results:
+          path:test-results
+      -store-artifacts:
+        path:test-results
+workflows:
+  build_tests:
+    jobs:
+      - run_tests
+
+
