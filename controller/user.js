@@ -18,15 +18,26 @@ export async function oneuser  (req, res){
 
 
   export async function createuser (req, res) {
-    const newUser = new user({
-      names: req.body.names,
-      email: req.body.email,
-      password :req.body.password,
-      role:req.body.role,
+    try{
+          const newUser = new user({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                password :req.body.password,
+                repeatPassword:req.body.repeatPassword,
+                // role:req.body.role,
+              
+            });
+            await newUser.save();
+            res.status(201).json({
+              "successMessage":"User created successfully!",
+              "data":newUser
+            });
+    }
+    catch(error){
+      res.status(500).json({"errorMessage":error.message})
+    }
     
-  });
-  await newUser.save();
-  res.status(201).send(newUser);
 }
 
 export async function deleteuser  (req, res)  {

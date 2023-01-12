@@ -1,8 +1,11 @@
 import { Schema, model } from "mongoose";
-import { genSalt, hash } from 'bcrypt'
+import { genSalt, hash } from "bcrypt";
 
 const schema = Schema({
-  names:{
+  firstName:{
+    type:String
+  },
+  lastName:{
     type:String
   },
   email:{
@@ -14,6 +17,10 @@ const schema = Schema({
   password:{
     type:String
   },
+  repeatPassword:{
+    type:String
+  },
+  
   role:{
     type:String,
     default:"user"

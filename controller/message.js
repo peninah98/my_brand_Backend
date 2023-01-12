@@ -21,7 +21,7 @@ export async function createmessage(req, res) {
 export async function allmessage(req, res) {
   try {
     const messages = await message.find();
-    return res.status(200).json({data:messages});
+    return res.statusCode(200).json({data:messages});
   } catch (error) {
     return res.status(500).json({ status:500,error: error.message });
   }
