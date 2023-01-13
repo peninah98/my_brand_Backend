@@ -12,7 +12,9 @@
                 "schema": {}
                 },
                 "application/xml": {
-                "schema": {}
+                "schema": {
+                    
+                }
                 }
             },
             "required": false

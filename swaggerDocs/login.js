@@ -16,13 +16,12 @@ const login = {
             parameters:[
                 {
                 in: "body",
-                name: "email",
+                name: "body",
                 required: true,
-                },
-                {
-                 in: "body",
-                 name: "password",
-                 required: true,
+                example:{
+                    email:"clara@gmail.com",
+                    password:"clara123"
+                }
                 },
                 
             ],

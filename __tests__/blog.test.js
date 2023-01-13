@@ -15,7 +15,7 @@ const newBlog = {
 describe('Test the blogs endpoint', () => {
     
     test('It should create new blog', async () => {
-      const response = await request(app).post('/api/v1/blogs').send(blog);
+      const response = await request(app).post('/api/v1/blogs').send(newBlog);
       expect(response.statusCode).toBe(201);
     });
   
