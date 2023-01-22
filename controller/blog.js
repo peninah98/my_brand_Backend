@@ -10,8 +10,10 @@ export async function oneblog  (req, res){
       }
       res.send(oneblog);
     } catch(error) {
+      console.log(error)
       res.status(500);
       res.send({ error: error.message });
+      
     }
   }
   export async function like(req, res){

@@ -44,9 +44,11 @@ export default async function loginpost(req,res){
         const user = { email: useremail,id: userId,role:useRole}
 
         const accesstoken = sign(user, process.env.ACCESS_TOKEN_SECRET)
-        res.json({accesstoken:accesstoken,user:user})
-        // console.log(user)
-        // res.send("successfully logged in")
+        res.status(200).json({
+            "successMessage":"Login successfully!",
+            "accesstoken":accesstoken,user:user
+        });
+       
     }
     else{
         res.send("doesn't match")

@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import mongoose from 'mongoose';
@@ -30,6 +31,7 @@ const options = {
   }).catch((Error)=>console.log("Connection fails",Error.message))
   
   const app = express();
+  app.use(morgan("dev"));
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
   app.use(express.json());
   app.use("/api/v1",cors(corsOptions), blogroutes);

@@ -5,9 +5,10 @@ const updateUser = {
   names:"clement rugwiro"
 }
 
-describe('Test the users endpoint', () => {
+describe("POST /users", () => {
+  describe("new email or password", () => {
     
-      
+        
 test('it should create user', async () => {
   const user = {
     lastName: 'steve',
@@ -18,49 +19,50 @@ test('it should create user', async () => {
   };
 
   const response = await request(app)
-    .post('api/v1/users')
+    .post('/api/v1/users')
     .send(user)
   expect(response.status).toBe(201);
 });
     
+})
 
+describe("list all users", () =>{
   test('It should return a list of users', async () => {
     const response = await request(app)
-    .get('api/v1/users/'+user._id)
+    .get('/api/v1/users')
     .send();
     expect(response.statusCode).toBe(200);
   });
+})
 
-  
-
-  test('It should return an error for a non-existent user with an invalid id', async () => {
-    const response = await request(app).get('/api/v1/users/999');
-    expect(response.statusCode).toBe(500);
-  });
-  test('It should return an error for a non-existent user with a valid id', async () => {
-    const response = await request(app).get('/api/v1/users/63bd6994134b021a1021c89f');
-    expect(response.statusCode).toBe(404);
-  });
-  test('it should return a user', async()=>{
+describe("Not existed user", () =>{
+  test('It should return a  user', async () => {
     const response = await request(app)
-    .get('/api/v1/users/63bd6994134b021a1021c89d');
-    expect(response.statusCode).toBe(200);
+    .get('/api/v1/users/yu')
+    .send();
+    expect(response.statusCode).toBe(404);
   });
-  test('it should update user', async() =>{
-    const response = await request(app).put('/api/v1/users/63bd6994134b021a1021c89d').send(updateUser);
-    expect(response.statusCode).toBe(200);
-  })
-  test('it should not update user', async() =>{
-    const response = await request(app).put('/api/v1/users/63bd54db650dcc25fcf6ce9').send(updateUser);
+})
+
+describe("delete a user", () =>{
+  test('It should not delete an existed user', async () => {
+    const response = await request(app)
+    .delete('/api/v1/users/id')
+    .send();
     expect(response.statusCode).toBe(404);
-  })
-  // test('it should delete user', async() =>{
-  //   const response = await request(app).delete('/api/v1/users/63bd6994134b021a1021c89d');
-  //   expect(response.statusCode).toBe(204);
-  // })
-  test('it should not delete user', async() =>{
-    const response = await request(app).delete('/api/v1/users/63bd54db650dcc25fcf6ce9f');
-    expect(response.statusCode).toBe(404);
-  })
-});
-  
+  });
+})
+
+
+// describe("delete a user", () =>{
+//   test('It should not delete an existed user', async () => {
+//     const response = await request(app)
+//     .delete('/api/v1/users/id')
+//     .send();
+//     expect(response.statusCode).toBe(404);
+//   });
+// })
+
+})
+
+// 

@@ -36,6 +36,7 @@ export async function onemessage  (req, res){
     }
     res.send(onemessage);
   } catch(error) {
+    console.log(error)
     res.status(500);
     res.send({ error: error.message });
   }
