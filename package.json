@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm server.js",
-    "test": "jest --testTimeout=40000  --coverage && coveralls < coverage/lcov.info",
-    "build": "webpack --config webpack.config.js"
+    "test": "jest --testTimeout=40000  --coverage && coveralls < coverage/lcov.info"
   },
   "keywords": [],
   "author": "Rahman Fadhil <rhmnfadhil@gmail.com> (https://rahmanfadhil.com/)",
