@@ -1,2 +1,1 @@
-# my_brand_Backend
-backend in nodejs
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/peninah98/my_brand_Backend/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/peninah98/my_brand_Backend/tree/main)
