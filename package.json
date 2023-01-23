@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm server.js",
-    "test": "jest --testTimeout=40000",
+    "test": "jest --testTimeout=40000  --coverage && coveralls < coverage/lcov.info",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
@@ -39,6 +39,7 @@
     "swagger-ui-express": "^4.6.0"
   },
   "devDependencies": {
+    "coveralls": "^3.1.1",
     "jest": "^29.3.1",
     "nodemon": "^2.0.20",
     "webpack": "^5.75.0",
